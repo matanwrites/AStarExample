@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9171F5721946D8DA0039C50E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5711946D8DA0039C50E /* main.swift */; };
+		9171F5741946D8DA0039C50E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5731946D8DA0039C50E /* ViewController.swift */; };
+		9171F5761946D8DA0039C50E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5751946D8DA0039C50E /* AppDelegate.swift */; };
+		9171F5781946D8DA0039C50E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9171F5771946D8DA0039C50E /* Images.xcassets */; };
+		9171F57B1946D8DA0039C50E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9171F5791946D8DA0039C50E /* Main.storyboard */; };
+		9171F5871946D8DA0039C50E /* GlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5861946D8DA0039C50E /* GlowTests.swift */; };
+		9171F5911946D8F70039C50E /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5901946D8F70039C50E /* Brain.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9171F5811946D8DA0039C50E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9171F5641946D8D90039C50E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9171F56B1946D8DA0039C50E;
+			remoteInfo = Glow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9171F56C1946D8DA0039C50E /* Glow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9171F5701946D8DA0039C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9171F5711946D8DA0039C50E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9171F5731946D8DA0039C50E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9171F5751946D8DA0039C50E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9171F5771946D8DA0039C50E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9171F57A1946D8DA0039C50E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9171F5801946D8DA0039C50E /* GlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9171F5851946D8DA0039C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9171F5861946D8DA0039C50E /* GlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowTests.swift; sourceTree = "<group>"; };
+		9171F5901946D8F70039C50E /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9171F5691946D8DA0039C50E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9171F57D1946D8DA0039C50E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9171F5631946D8D90039C50E = {
+			isa = PBXGroup;
+			children = (
+				9171F56E1946D8DA0039C50E /* Glow */,
+				9171F5831946D8DA0039C50E /* GlowTests */,
+				9171F56D1946D8DA0039C50E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9171F56D1946D8DA0039C50E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9171F56C1946D8DA0039C50E /* Glow.app */,
+				9171F5801946D8DA0039C50E /* GlowTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9171F56E1946D8DA0039C50E /* Glow */ = {
+			isa = PBXGroup;
+			children = (
+				9171F5731946D8DA0039C50E /* ViewController.swift */,
+				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
+				9171F5901946D8F70039C50E /* Brain.swift */,
+				9171F5771946D8DA0039C50E /* Images.xcassets */,
+				9171F5791946D8DA0039C50E /* Main.storyboard */,
+				9171F56F1946D8DA0039C50E /* Supporting Files */,
+			);
+			path = Glow;
+			sourceTree = "<group>";
+		};
+		9171F56F1946D8DA0039C50E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9171F5701946D8DA0039C50E /* Info.plist */,
+				9171F5711946D8DA0039C50E /* main.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9171F5831946D8DA0039C50E /* GlowTests */ = {
+			isa = PBXGroup;
+			children = (
+				9171F5861946D8DA0039C50E /* GlowTests.swift */,
+				9171F5841946D8DA0039C50E /* Supporting Files */,
+			);
+			path = GlowTests;
+			sourceTree = "<group>";
+		};
+		9171F5841946D8DA0039C50E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9171F5851946D8DA0039C50E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9171F56B1946D8DA0039C50E /* Glow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9171F58A1946D8DA0039C50E /* Build configuration list for PBXNativeTarget "Glow" */;
+			buildPhases = (
+				9171F5681946D8DA0039C50E /* Sources */,
+				9171F5691946D8DA0039C50E /* Frameworks */,
+				9171F56A1946D8DA0039C50E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Glow;
+			productName = Glow;
+			productReference = 9171F56C1946D8DA0039C50E /* Glow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9171F57F1946D8DA0039C50E /* GlowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9171F58D1946D8DA0039C50E /* Build configuration list for PBXNativeTarget "GlowTests" */;
+			buildPhases = (
+				9171F57C1946D8DA0039C50E /* Sources */,
+				9171F57D1946D8DA0039C50E /* Frameworks */,
+				9171F57E1946D8DA0039C50E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9171F5821946D8DA0039C50E /* PBXTargetDependency */,
+			);
+			name = GlowTests;
+			productName = GlowTests;
+			productReference = 9171F5801946D8DA0039C50E /* GlowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9171F5641946D8D90039C50E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = eyeplum.com;
+				TargetAttributes = {
+					9171F56B1946D8DA0039C50E = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					9171F57F1946D8DA0039C50E = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 9171F56B1946D8DA0039C50E;
+					};
+				};
+			};
+			buildConfigurationList = 9171F5671946D8D90039C50E /* Build configuration list for PBXProject "Glow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9171F5631946D8D90039C50E;
+			productRefGroup = 9171F56D1946D8DA0039C50E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9171F56B1946D8DA0039C50E /* Glow */,
+				9171F57F1946D8DA0039C50E /* GlowTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9171F56A1946D8DA0039C50E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9171F5781946D8DA0039C50E /* Images.xcassets in Resources */,
+				9171F57B1946D8DA0039C50E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9171F57E1946D8DA0039C50E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9171F5681946D8DA0039C50E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9171F5761946D8DA0039C50E /* AppDelegate.swift in Sources */,
+				9171F5741946D8DA0039C50E /* ViewController.swift in Sources */,
+				9171F5911946D8F70039C50E /* Brain.swift in Sources */,
+				9171F5721946D8DA0039C50E /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9171F57C1946D8DA0039C50E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9171F5871946D8DA0039C50E /* GlowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9171F5821946D8DA0039C50E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9171F56B1946D8DA0039C50E /* Glow */;
+			targetProxy = 9171F5811946D8DA0039C50E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9171F5791946D8DA0039C50E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9171F57A1946D8DA0039C50E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9171F5881946D8DA0039C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9171F5891946D8DA0039C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9171F58B1946D8DA0039C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Glow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9171F58C1946D8DA0039C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Glow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9171F58E1946D8DA0039C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Glow.app/Contents/MacOS/Glow";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GlowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		9171F58F1946D8DA0039C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Glow.app/Contents/MacOS/Glow";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GlowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9171F5671946D8D90039C50E /* Build configuration list for PBXProject "Glow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9171F5881946D8DA0039C50E /* Debug */,
+				9171F5891946D8DA0039C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9171F58A1946D8DA0039C50E /* Build configuration list for PBXNativeTarget "Glow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9171F58B1946D8DA0039C50E /* Debug */,
+				9171F58C1946D8DA0039C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9171F58D1946D8DA0039C50E /* Build configuration list for PBXNativeTarget "GlowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9171F58E1946D8DA0039C50E /* Debug */,
+				9171F58F1946D8DA0039C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9171F5641946D8D90039C50E /* Project object */;
+}
