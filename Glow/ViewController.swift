@@ -24,9 +24,7 @@ class ViewController: NSViewController {
         
         cellContainer.layer = CALayer()
         cellContainer.wantsLayer = true
-        
-        stepLabel.selectable = true
-        
+                
         NSNotificationCenter.defaultCenter().addObserverForName(
             kDataChangeNotificationName,
             object: nil,
