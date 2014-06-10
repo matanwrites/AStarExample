@@ -17,6 +17,12 @@ let kDefaultConfiguration = [
     ["R", "R", "B", "B"],
     ["R", "R", "B", "B"],
 ]
+let kDestinationConfiguration = [
+    ["_", "B", "R", "B"],
+    ["B", "R", "B", "R"],
+    ["R", "B", "R", "B"],
+    ["B", "R", "B", "R"],
+]
 
 
 class Brain: NSObject {
