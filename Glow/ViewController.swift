@@ -15,6 +15,7 @@ let kSpacing: CGFloat = 2
 
 class ViewController: NSViewController {
     
+    
     @IBOutlet var cellContainer: NSView
     @IBOutlet var stepLabel: NSTextField
     
@@ -55,20 +56,21 @@ class ViewController: NSViewController {
         let data = Brain.activeBrain().configuration
         stepLabel.stringValue = Brain.activeBrain().steps
         
-        var x = 0
-        while x < 4 {
-            var y = 0
-            while y < 4 {
+        let rows = data.count - 1
+        let columns = data[0].count - 1
+        
+        for x in 0...rows {
+            for y in 0...columns {
                 let cell = CALayer()
                 cell.frame = CGRectMake(CGFloat(x) * width, containerWidth - CGFloat(y + 1) * width, cellWidth, cellWidth)
                 
                 switch data[y][x] as String {
-                case "_":
+                case kBlank:
                     cell.backgroundColor = NSColor.whiteColor().CGColor
-                case "R":
+                case kRed:
                     cell.backgroundColor =
                         NSColor(calibratedRed: 1, green: 60.0/255, blue: 60.0/255, alpha: 0.7).CGColor
-                case "B":
+                case kBlue:
                     cell.backgroundColor =
                         NSColor(calibratedRed: 0, green: 100.0/255, blue: 1, alpha: 0.7).CGColor
                 default:
@@ -76,9 +78,7 @@ class ViewController: NSViewController {
                 }
                 
                 cellContainer.layer.addSublayer(cell)
-                y++
             }
-            x++
         }
     }
     

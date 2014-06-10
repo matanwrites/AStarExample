@@ -9,19 +9,23 @@
 import Cocoa
 
 
+let kBlank = "_"
+let kRed   = "R"
+let kBlue  = "B"
+
 let kDataChangeNotificationName = "com.eyeplum.data_changed"
 let kDefaultSteps = ""
 let kDefaultConfiguration = [
-    ["_", "R", "B", "B"],
-    ["R", "R", "B", "B"],
-    ["R", "R", "B", "B"],
-    ["R", "R", "B", "B"],
+    [kBlank, kRed, kBlue, kBlue],
+    [kRed, kRed, kBlue, kBlue],
+    [kRed, kRed, kBlue, kBlue],
+    [kRed, kRed, kBlue, kBlue],
 ]
 let kDestinationConfiguration = [
-    ["_", "B", "R", "B"],
-    ["B", "R", "B", "R"],
-    ["R", "B", "R", "B"],
-    ["B", "R", "B", "R"],
+    [kBlank, kBlue, kRed, kBlue],
+    [kBlue, kRed, kBlue, kRed],
+    [kRed, kBlue, kRed, kBlue],
+    [kBlue, kRed, kBlue, kRed],
 ]
 
 
