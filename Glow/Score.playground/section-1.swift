@@ -1,6 +1,7 @@
 // Playground - noun: a place where people can play
 
 import Cocoa
+import XCPlayground
 
 let kBlank = "_"
 let kRed   = "R"
@@ -120,6 +121,18 @@ struct Row {
     }
 }
 
+@infix func - (left: Configuration, right: Configuration) -> Int {
+    var result: Int = 0
+    for (y, row) in enumerate(left.rows) {
+        for (x, items) in enumerate(row.items) {
+            let leftItem = left.rows[y].items[x]
+            let rightItem = right.rows[y].items[x]
+            result += leftItem != rightItem ? 1 : 0
+        }
+    }
+    return result
+}
+
 let kDefault = Configuration([
     Row([kBlank, kRed, kBlue, kBlue]),
     Row([kRed, kRed, kBlue, kBlue]),
@@ -148,16 +161,47 @@ let kTarget = Configuration([
 ])
 kTarget.coordinate
 
-@infix func - (left: Configuration, right: Configuration) -> Int {
-    var result: Int = 0
-    for (y, row) in enumerate(left.rows) {
-        for (x, items) in enumerate(row.items) {
-            let leftItem = left.rows[y].items[x]
-            let rightItem = right.rows[y].items[x]
-            result += leftItem != rightItem ? 1 : 0
+kTarget - kDefault
+
+var config = kDefault
+var score = 16
+
+stop
+
+while kTarget - config > 0 {
+    if let up = config.up() {
+        let upScore = kTarget - up
+        if upScore <= score {
+            score = upScore
+            config = up
         }
     }
-    return result
+    
+    if let down = config.down() {
+        let downScore = kTarget - down
+        if downScore <= score {
+            score = downScore
+            config = down
+        }
+    }
+    
+    if let left = config.left() {
+        let leftScore = kTarget - left
+        if leftScore <= score {
+            score = leftScore
+            config = left
+        }
+    }
+    
+    if let right = config.right() {
+        let rightScore = kTarget - right
+        if rightScore <= score {
+            score = rightScore
+            config = right
+        }
+    }
+    
+    XCPCaptureValue("Score", score)
 }
 
-kTarget - kDefault
+
