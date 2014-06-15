@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 let kBlank = "_"
 let kRed   = "R"
 let kBlue  = "B"
@@ -28,7 +27,6 @@ let kDestinationConfiguration = [
     [kBlue, kRed, kBlue, kRed],
 ]
 
-
 class Brain: NSObject {
     
     class func activeBrain() -> Brain {
@@ -39,19 +37,16 @@ class Brain: NSObject {
         return Static.active_brain
     }
     
-    
     var x: Int = 0
     var y: Int = 0
     var steps: String = kDefaultSteps
     var configuration = kDefaultConfiguration
-    
     
     func printConfiguration() {
         NSNotificationCenter.defaultCenter().postNotificationName(
             kDataChangeNotificationName,
             object: self)
     }
-
 
     func swapInRow(moveRight: Bool) {
         let row = configuration[y]
@@ -62,7 +57,6 @@ class Brain: NSObject {
         row[currentX] = temp
         configuration[y] = row
     }
-
 
     func swapBetweenRows(moveDown: Bool) {
         let currentX = x
@@ -76,7 +70,6 @@ class Brain: NSObject {
         configuration[currentY] = currentRow
         configuration[y] = neighborRow
     }
-
     
     func L() {
         if x > 0 {
@@ -88,7 +81,6 @@ class Brain: NSObject {
         }
     }
     
-    
     func R() {
         if x < 3 {
             steps = steps.stringByAppendingString("R")
@@ -98,7 +90,6 @@ class Brain: NSObject {
             println("[WARN] Can't move right!")
         }
     }
-    
     
     func U() {
         if y > 0 {
@@ -110,7 +101,6 @@ class Brain: NSObject {
         }
     }
     
-    
     func D() {
         if y < 3 {
             steps = steps.stringByAppendingString("D")
@@ -120,7 +110,6 @@ class Brain: NSObject {
             println("[WARN] Can't move down!")
         }
     }
-    
     
     func reset() {
         x = 0

@@ -9,16 +9,12 @@
 import Cocoa
 import QuartzCore
 
-
 let kSpacing: CGFloat = 2
-
 
 class ViewController: NSViewController {
     
-    
     @IBOutlet var cellContainer: NSView
     @IBOutlet var stepLabel: NSTextField
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +32,9 @@ class ViewController: NSViewController {
             })
     }
     
-    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
     
     func reloadData() {
         if let cells = cellContainer.layer.sublayers {
@@ -81,7 +75,6 @@ class ViewController: NSViewController {
             }
         }
     }
-    
     
     override func viewDidAppear() {
         super.viewDidAppear()

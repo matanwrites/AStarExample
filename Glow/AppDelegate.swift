@@ -8,12 +8,10 @@
 
 import Cocoa
 
-
 let kTagRight = 1000
 let kTagLeft  = 2000
 let kTagUp    = 3000
 let kTagDown  = 4000
-
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
