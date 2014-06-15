@@ -27,7 +27,6 @@ class ViewController: NSViewController {
             object: nil,
             queue: NSOperationQueue.mainQueue(),
             usingBlock: { (notification: NSNotification!) -> () in
-                // FIXME: might be memory leaks here
                 self.reloadData()
             })
     }

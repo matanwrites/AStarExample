@@ -71,43 +71,51 @@ class Brain: NSObject {
         configuration[y] = neighborRow
     }
     
-    func L() {
+    func L() -> Bool {
         if x > 0 {
             steps = steps.stringByAppendingString("L")
             swapInRow(false)
             printConfiguration()
+            return true
         } else {
             println("[WARN] Can't move left!")
+            return false
         }
     }
     
-    func R() {
+    func R() -> Bool {
         if x < 3 {
             steps = steps.stringByAppendingString("R")
             swapInRow(true)
             printConfiguration()
+            return true
         } else {
             println("[WARN] Can't move right!")
+            return false
         }
     }
     
-    func U() {
+    func U() -> Bool {
         if y > 0 {
             steps = steps.stringByAppendingString("U")
             swapBetweenRows(false)
             printConfiguration()
+            return true
         } else {
             println("[WARN] Can't move up!")
+            return false
         }
     }
     
-    func D() {
+    func D() -> Bool {
         if y < 3 {
             steps = steps.stringByAppendingString("D")
             swapBetweenRows(true)
             printConfiguration()
+            return true
         } else {
             println("[WARN] Can't move down!")
+            return false
         }
     }
     

@@ -38,6 +38,7 @@
 		9171F5851946D8DA0039C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9171F5861946D8DA0039C50E /* GlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowTests.swift; sourceTree = "<group>"; };
 		9171F5901946D8F70039C50E /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		91B4BF27194DC571006C14C2 /* Score.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Score.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 				9171F5771946D8DA0039C50E /* Images.xcassets */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
+				91B4BF27194DC571006C14C2 /* Score.playground */,
 			);
 			path = Glow;
 			sourceTree = "<group>";
