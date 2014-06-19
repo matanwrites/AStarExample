@@ -36,52 +36,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="500" height="587"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="dbT-WR-JXe">
+                            <visualEffectView appearanceType="vibrantDark" fixedFrame="YES" blendingMode="behindWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="dbT-WR-JXe">
                                 <rect key="frame" x="0.0" y="0.0" width="500" height="587"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="nZX-Ag-uu0">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZX-Ag-uu0">
                                         <rect key="frame" x="20" y="20" width="460" height="460"/>
                                     </customView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7QW-Qa-38a">
-                                        <rect key="frame" x="18" y="555" width="464" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" truncatesLastVisibleLine="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="..." usesSingleLineMode="YES" id="Lkt-Ll-r6s">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-Qz-FmP">
+                                        <rect key="frame" x="18" y="488" width="464" height="54"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" truncatesLastVisibleLine="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="16" usesSingleLineMode="YES" id="s4U-Zj-8Ja">
+                                            <font key="font" metaFont="system" size="44"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7QW-Qa-38a">
+                                        <rect key="frame" x="18" y="550" width="464" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="..." usesSingleLineMode="YES" id="Lkt-Ll-r6s">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gdd-Qz-FmP">
-                                        <rect key="frame" x="18" y="488" width="464" height="59"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="59" id="gwx-RP-Lpp"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" truncatesLastVisibleLine="YES" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="16" usesSingleLineMode="YES" id="s4U-Zj-8Ja">
-                                            <font key="font" metaFont="system" size="50"/>
-                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="nZX-Ag-uu0" firstAttribute="top" secondItem="gdd-Qz-FmP" secondAttribute="bottom" constant="8" id="AUn-Vk-Q4G"/>
-                                    <constraint firstItem="gdd-Qz-FmP" firstAttribute="leading" secondItem="nZX-Ag-uu0" secondAttribute="leading" id="RGS-eD-xGB"/>
-                                    <constraint firstAttribute="bottom" secondItem="nZX-Ag-uu0" secondAttribute="bottom" constant="20" id="Vdj-DZ-wTU"/>
-                                    <constraint firstItem="7QW-Qa-38a" firstAttribute="top" secondItem="dbT-WR-JXe" secondAttribute="top" constant="15" id="WiQ-fa-iQy"/>
-                                    <constraint firstAttribute="trailing" secondItem="nZX-Ag-uu0" secondAttribute="trailing" constant="20" id="X0R-D6-Kfq"/>
-                                    <constraint firstItem="gdd-Qz-FmP" firstAttribute="trailing" secondItem="nZX-Ag-uu0" secondAttribute="trailing" id="aet-4m-at7"/>
-                                    <constraint firstItem="nZX-Ag-uu0" firstAttribute="leading" secondItem="dbT-WR-JXe" secondAttribute="leading" constant="20" id="kZD-Sy-d9H"/>
-                                    <constraint firstItem="7QW-Qa-38a" firstAttribute="leading" secondItem="gdd-Qz-FmP" secondAttribute="leading" id="kcS-9Y-0FN"/>
-                                    <constraint firstItem="gdd-Qz-FmP" firstAttribute="trailing" secondItem="7QW-Qa-38a" secondAttribute="trailing" id="vOd-la-kMj"/>
-                                    <constraint firstItem="gdd-Qz-FmP" firstAttribute="top" secondItem="7QW-Qa-38a" secondAttribute="bottom" constant="8" symbolic="YES" id="xux-Jk-CYD"/>
-                                </constraints>
                             </visualEffectView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dbT-WR-JXe" secondAttribute="trailing" id="9HL-ue-0Pk"/>
-                            <constraint firstItem="dbT-WR-JXe" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="dIP-Qx-E5J"/>
-                            <constraint firstAttribute="bottom" secondItem="dbT-WR-JXe" secondAttribute="bottom" id="k57-S4-fGs"/>
-                            <constraint firstItem="dbT-WR-JXe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="tcs-fc-8B7"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cellContainer" destination="nZX-Ag-uu0" id="Ihb-1w-dkv"/>
@@ -180,6 +159,12 @@
                                         <menuItem title="Target" tag="6000" keyEquivalent="t" id="9Xl-iL-r0j">
                                             <connections>
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="pce-Dc-JA7"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="riV-Fr-PXz"/>
+                                        <menuItem title="Copy Steps" tag="20000" keyEquivalent="c" id="fBH-cp-5nK">
+                                            <connections>
+                                                <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="wLg-ba-geM"/>
                                             </connections>
                                         </menuItem>
                                     </items>

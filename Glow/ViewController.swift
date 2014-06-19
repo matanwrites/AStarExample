@@ -126,6 +126,10 @@ class ViewController: NSViewController {
                     println("Do nothing.")
                 }
             }
+        case kTagCopy:
+            let pastboard = NSPasteboard.generalPasteboard()
+            pastboard.clearContents()
+            pastboard.writeObjects([stepStack.bridgeToObjectiveC().componentsJoinedByString("")])
         default:
             println("Do nothing.")
         }
