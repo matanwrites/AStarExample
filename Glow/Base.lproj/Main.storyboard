@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.17"/>
+        <deployment defaultVersion="101000" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6154.21"/>
     </dependencies>
     <scenes>
         <!--Window Controller - Window-->
@@ -11,7 +12,7 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="500" height="520"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="500" height="520"/>
                         <value key="maxSize" type="size" width="500" height="520"/>
                         <view key="contentView" id="O92-4t-NeX">
@@ -91,13 +92,6 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
-                                        <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
-                                        <menuItem title="Services" id="NMo-om-nkz">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                                         <menuItem title="Hide Glow" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
@@ -128,25 +122,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Control" id="GEO-Iw-cKr">
                                     <items>
-                                        <menuItem title="Right" tag="1000" keyEquivalent="l" id="B8w-pD-EE9">
+                                        <menuItem title="Right" tag="1000" keyEquivalent="" id="B8w-pD-EE9">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="wgD-eC-iSp"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Left" tag="2000" keyEquivalent="h" id="Oms-7q-7Nq">
+                                        <menuItem title="Left" tag="2000" keyEquivalent="" id="Oms-7q-7Nq">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="GLa-b6-wKv"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Up" tag="3000" keyEquivalent="k" id="kCH-x7-8s8">
+                                        <menuItem title="Up" tag="3000" keyEquivalent="" id="kCH-x7-8s8">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="3rK-lW-5Rj"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Down" tag="4000" keyEquivalent="j" id="QQs-by-Rb3">
+                                        <menuItem title="Down" tag="4000" keyEquivalent="" id="QQs-by-Rb3">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="Gtu-5x-UKl"/>
@@ -156,6 +150,12 @@
                                         <menuItem title="Reset" keyEquivalent="r" id="E7K-IF-YNI">
                                             <connections>
                                                 <action selector="resetTapped:" target="Voe-Tx-rLC" id="MEd-jn-2tg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="68f-3h-b2h"/>
+                                        <menuItem title="Target" keyEquivalent="t" id="9Xl-iL-r0j">
+                                            <connections>
+                                                <action selector="targetTapped:" target="Voe-Tx-rLC" id="IBB-Jo-kMf"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -175,18 +175,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                            <menuItem title="Help" id="wpr-3q-Mcd">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
-                                    <items>
-                                        <menuItem title="Glow Help" keyEquivalent="?" id="FKE-Sm-Kum">
-                                            <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
                                         </menuItem>
                                     </items>

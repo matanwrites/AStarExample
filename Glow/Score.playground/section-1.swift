@@ -163,45 +163,54 @@ kTarget.coordinate
 
 kTarget - kDefault
 
-var config = kDefault
+var config: Configuration? = kDefault
 var score = 16
 
-stop
-
-while kTarget - config > 0 {
-    if let up = config.up() {
-        let upScore = kTarget - up
-        if upScore <= score {
-            score = upScore
-            config = up
-        }
-    }
-    
-    if let down = config.down() {
-        let downScore = kTarget - down
-        if downScore <= score {
-            score = downScore
-            config = down
-        }
-    }
-    
-    if let left = config.left() {
-        let leftScore = kTarget - left
-        if leftScore <= score {
-            score = leftScore
-            config = left
-        }
-    }
-    
-    if let right = config.right() {
-        let rightScore = kTarget - right
-        if rightScore <= score {
-            score = rightScore
-            config = right
-        }
-    }
-    
-    XCPCaptureValue("Score", score)
+while config {
+    XCPCaptureValue("Score Down", kTarget - config!)
+    config = config!.down()
 }
+
+config = kDefault
+while config {
+    XCPCaptureValue("Score Right", kTarget - config!)
+    config = config!.right()
+}
+
+//while kTarget - config > 0 {
+//    if let up = config.up() {
+//        let upScore = kTarget - up
+//        if upScore <= score {
+//            score = upScore
+//            config = up
+//        }
+//    }
+//    
+//    if let down = config.down() {
+//        let downScore = kTarget - down
+//        if downScore <= score {
+//            score = downScore
+//            config = down
+//        }
+//    }
+//    
+//    if let left = config.left() {
+//        let leftScore = kTarget - left
+//        if leftScore <= score {
+//            score = leftScore
+//            config = left
+//        }
+//    }
+//    
+//    if let right = config.right() {
+//        let rightScore = kTarget - right
+//        if rightScore <= score {
+//            score = rightScore
+//            config = right
+//        }
+//    }
+//    
+//    XCPCaptureValue("Score", score)
+//}
 
 

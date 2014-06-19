@@ -41,6 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func resetTapped(sender: AnyObject?) {
         Brain.activeBrain().reset()
     }
+    
+    @IBAction func targetTapped(sender: AnyObject?) {
+        Brain.activeBrain().showTarget()
+    }
 
 }
 

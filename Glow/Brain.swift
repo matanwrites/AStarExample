@@ -127,4 +127,12 @@ class Brain: NSObject {
         printConfiguration()
     }
     
+    func showTarget() {
+        x = 0
+        y = 0
+        steps = kDefaultSteps
+        configuration = kDestinationConfiguration
+        printConfiguration()
+    }
+    
 }
