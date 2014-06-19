@@ -127,6 +127,7 @@
 				9171F5681946D8DA0039C50E /* Sources */,
 				9171F5691946D8DA0039C50E /* Frameworks */,
 				9171F56A1946D8DA0039C50E /* Resources */,
+				910A3EDE1953225C00E3C1D4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -210,6 +211,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		910A3EDE1953225C00E3C1D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT=/usr/bin/git\n\nINFO_PLIST=$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Contents/Info.plist\n\nBUILD_SUFIX=\"\"\n\nif [ $CONFIGURATION == Debug ]\nthen\nBUILD_SUFIX=\"D\"\nfi\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion `$GIT rev-list HEAD --count`$BUILD_SUFIX\"  \"$INFO_PLIST\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9171F5681946D8DA0039C50E /* Sources */ = {
