@@ -17,6 +17,7 @@ let kTagUp     = 3000
 let kTagDown   = 4000
 let kTagReset  = 5000
 let kTagTarget = 6000
+let kTagUndo   = 10000
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     

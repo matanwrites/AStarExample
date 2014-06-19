@@ -12,6 +12,11 @@ let kBlank = "_"
 let kRed   = "R"
 let kBlue  = "B"
 
+let kUp    = "U"
+let kDown  = "D"
+let kLeft  = "L"
+let kRight = "R"
+
 @infix func - (left: Configuration, right: Configuration) -> Int {
     var result: Int = 0
     for (y, row) in enumerate(left.rows) {

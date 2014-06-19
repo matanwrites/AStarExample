@@ -13,6 +13,10 @@ let kSpacing: CGFloat = 2
 
 class ViewController: NSViewController {
     
+    @IBOutlet var cellContainer: NSView
+    @IBOutlet var stepLabel: NSTextField
+    @IBOutlet var scoreLabel: NSTextField
+    
     var defaultData: Configuration {
     get {
         return Configuration([
@@ -37,8 +41,7 @@ class ViewController: NSViewController {
     
     var data: Configuration?
     
-    @IBOutlet var cellContainer: NSView
-    @IBOutlet var stepLabel: NSTextField
+    var stepStack: String[] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,23 +87,45 @@ class ViewController: NSViewController {
         case kTagUp:
             if let newData = data!.up() {
                 data = newData
+                stepStack.append(kUp)
             }
         case kTagDown:
             if let newData = data!.down() {
                 data = newData
+                stepStack.append(kDown)
             }
         case kTagLeft:
             if let newData = data!.left() {
                 data = newData
+                stepStack.append(kLeft)
             }
         case kTagRight:
             if let newData = data!.right() {
                 data = newData
+                stepStack.append(kRight)
             }
         case kTagReset:
             data = defaultData
+            stepStack.removeAll(keepCapacity: false)
         case kTagTarget:
             data = targetData
+            stepStack.removeAll(keepCapacity: false)
+        case kTagUndo:
+            if stepStack.count > 0 {
+                let last = stepStack.removeLast()
+                switch last {
+                case kUp:
+                    data = data!.down()
+                case kDown:
+                    data = data!.up()
+                case kLeft:
+                    data = data!.right()
+                case kRight:
+                    data = data!.left()
+                default:
+                    println("Do nothing.")
+                }
+            }
         default:
             println("Do nothing.")
         }
@@ -115,11 +140,15 @@ class ViewController: NSViewController {
             }
         }
         
+        stepLabel.stringValue = stepStack.bridgeToObjectiveC().componentsJoinedByString("")
+        
+        if let validData = data {
+            scoreLabel.stringValue = "\(targetData - validData)"
+        }
+        
         let containerWidth = NSWidth(cellContainer.bounds)
         let width = containerWidth / 4
         let cellWidth = width - kSpacing
-        
-        // stepLabel.stringValue = Brain.activeBrain().steps
         
         let rows = data!.rows.count - 1
         let columns = data!.rows[0].items.count - 1

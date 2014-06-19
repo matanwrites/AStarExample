@@ -80,9 +80,9 @@
 		9171F56E1946D8DA0039C50E /* Glow */ = {
 			isa = PBXGroup;
 			children = (
-				9171F5731946D8DA0039C50E /* ViewController.swift */,
 				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
 				9171F5901946D8F70039C50E /* Configuration.swift */,
+				9171F5731946D8DA0039C50E /* ViewController.swift */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
 			);
