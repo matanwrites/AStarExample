@@ -13,7 +13,7 @@
 		9171F5781946D8DA0039C50E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9171F5771946D8DA0039C50E /* Images.xcassets */; };
 		9171F57B1946D8DA0039C50E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9171F5791946D8DA0039C50E /* Main.storyboard */; };
 		9171F5871946D8DA0039C50E /* GlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5861946D8DA0039C50E /* GlowTests.swift */; };
-		9171F5911946D8F70039C50E /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5901946D8F70039C50E /* Brain.swift */; };
+		9171F5911946D8F70039C50E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5901946D8F70039C50E /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 		9171F5801946D8DA0039C50E /* GlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9171F5851946D8DA0039C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9171F5861946D8DA0039C50E /* GlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowTests.swift; sourceTree = "<group>"; };
-		9171F5901946D8F70039C50E /* Brain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		9171F5901946D8F70039C50E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		91B4BF27194DC571006C14C2 /* Score.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Score.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,11 +82,9 @@
 			children = (
 				9171F5731946D8DA0039C50E /* ViewController.swift */,
 				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
-				9171F5901946D8F70039C50E /* Brain.swift */,
-				9171F5771946D8DA0039C50E /* Images.xcassets */,
+				9171F5901946D8F70039C50E /* Configuration.swift */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
-				91B4BF27194DC571006C14C2 /* Score.playground */,
 			);
 			path = Glow;
 			sourceTree = "<group>";
@@ -94,6 +92,8 @@
 		9171F56F1946D8DA0039C50E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91B4BF27194DC571006C14C2 /* Score.playground */,
+				9171F5771946D8DA0039C50E /* Images.xcassets */,
 				9171F5701946D8DA0039C50E /* Info.plist */,
 				9171F5711946D8DA0039C50E /* main.swift */,
 			);
@@ -218,7 +218,7 @@
 			files = (
 				9171F5761946D8DA0039C50E /* AppDelegate.swift in Sources */,
 				9171F5741946D8DA0039C50E /* ViewController.swift in Sources */,
-				9171F5911946D8F70039C50E /* Brain.swift in Sources */,
+				9171F5911946D8F70039C50E /* Configuration.swift in Sources */,
 				9171F5721946D8DA0039C50E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

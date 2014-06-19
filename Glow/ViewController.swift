@@ -13,6 +13,30 @@ let kSpacing: CGFloat = 2
 
 class ViewController: NSViewController {
     
+    var defaultData: Configuration {
+    get {
+        return Configuration([
+            Row([kBlank, kRed, kBlue, kBlue]),
+            Row([kRed, kRed, kBlue, kBlue]),
+            Row([kRed, kRed, kBlue, kBlue]),
+            Row([kRed, kRed, kBlue, kBlue]),
+            ])
+    }
+    }
+    
+    var targetData: Configuration {
+    get {
+        return Configuration([
+            Row([kBlank, kBlue, kRed, kBlue]),
+            Row([kBlue, kRed, kBlue, kRed]),
+            Row([kRed, kBlue, kRed, kBlue]),
+            Row([kBlue, kRed, kBlue, kRed]),
+            ])
+    }
+    }
+    
+    var data: Configuration?
+    
     @IBOutlet var cellContainer: NSView
     @IBOutlet var stepLabel: NSTextField
     
@@ -21,21 +45,70 @@ class ViewController: NSViewController {
         
         cellContainer.layer = CALayer()
         cellContainer.wantsLayer = true
-                
+        
         NSNotificationCenter.defaultCenter().addObserverForName(
-            kDataChangeNotificationName,
+            kKeyboardEventNotification,
             object: nil,
             queue: NSOperationQueue.mainQueue(),
             usingBlock: { (notification: NSNotification!) -> () in
-                self.reloadData()
+                let keyTag: Int = notification.userInfo[kUserInfoKeyTag] as Int
+                self.handleKeyboardEvent(keyTag)
             })
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        data = defaultData
+        render()
     }
     
-    func reloadData() {
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        view.window.styleMask |= NSFullSizeContentViewWindowMask
+        view.window.titlebarAppearsTransparent = true
+        view.window.titleVisibility = .Hidden
+        view.window.movableByWindowBackground = true
+    }
+    
+    override func viewDidDisappear() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        super.viewDidDisappear()
+    }
+    
+    func handleKeyboardEvent(keyTag: Int) {
+        println("\(keyTag) Tapped.")
+        
+        switch keyTag {
+        case kTagUp:
+            if let newData = data!.up() {
+                data = newData
+            }
+        case kTagDown:
+            if let newData = data!.down() {
+                data = newData
+            }
+        case kTagLeft:
+            if let newData = data!.left() {
+                data = newData
+            }
+        case kTagRight:
+            if let newData = data!.right() {
+                data = newData
+            }
+        case kTagReset:
+            data = defaultData
+        case kTagTarget:
+            data = targetData
+        default:
+            println("Do nothing.")
+        }
+        
+        render()
+    }
+    
+    func render() {
         if let cells = cellContainer.layer.sublayers {
             for cell: CALayer! in cells.copy() {
                 cell.removeFromSuperlayer()
@@ -46,18 +119,17 @@ class ViewController: NSViewController {
         let width = containerWidth / 4
         let cellWidth = width - kSpacing
         
-        let data = Brain.activeBrain().configuration
-        stepLabel.stringValue = Brain.activeBrain().steps
+        // stepLabel.stringValue = Brain.activeBrain().steps
         
-        let rows = data.count - 1
-        let columns = data[0].count - 1
+        let rows = data!.rows.count - 1
+        let columns = data!.rows[0].items.count - 1
         
         for x in 0...rows {
             for y in 0...columns {
                 let cell = CALayer()
                 cell.frame = CGRectMake(CGFloat(x) * width, containerWidth - CGFloat(y + 1) * width, cellWidth, cellWidth)
                 
-                switch data[y][x] as String {
+                switch data!.rows[y].items[x] as String {
                 case kBlank:
                     cell.backgroundColor = NSColor.whiteColor().CGColor
                 case kRed:
@@ -73,15 +145,6 @@ class ViewController: NSViewController {
                 cellContainer.layer.addSublayer(cell)
             }
         }
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        
-        view.window.styleMask |= NSFullSizeContentViewWindowMask
-        view.window.titlebarAppearsTransparent = true
-        view.window.titleVisibility = .Hidden
-        view.window.movableByWindowBackground = true
     }
     
 }
