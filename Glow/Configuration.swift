@@ -65,14 +65,8 @@ struct Configuration {
     func left() -> Configuration? {
         if let coord = self.coordinate {
             if coord.x > 0 {
-                let newRows = self.rows
-                let newRow = newRows[coord.y]
-                let blank = newRow.items[coord.x]
-                let leftOne = newRow.items[coord.x - 1]
-                newRow.items[coord.x - 1] = blank
-                newRow.items[coord.x] = leftOne
-                newRows[coord.y] = newRow
-                return Configuration(newRows)
+                swap(&(rows[coord.y].items[coord.x]), &(rows[coord.y].items[coord.x - 1]))
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -84,14 +78,8 @@ struct Configuration {
     func right() -> Configuration? {
         if let coord = self.coordinate {
             if coord.x + 1 < self.rows[coord.y].items.count {
-                let newRows = self.rows
-                let newRow = newRows[coord.y]
-                let blank = newRow.items[coord.x]
-                let rightOne = newRow.items[coord.x + 1]
-                newRow.items[coord.x + 1] = blank
-                newRow.items[coord.x] = rightOne
-                newRows[coord.y] = newRow
-                return Configuration(newRows)
+                swap(&(rows[coord.y].items[coord.x]), &(rows[coord.y].items[coord.x + 1]))
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -103,16 +91,8 @@ struct Configuration {
     func up() -> Configuration? {
         if let coord = self.coordinate {
             if coord.y > 0 {
-                let newRows = self.rows
-                let newRow0 = newRows[coord.y - 1]
-                let upOne = newRow0.items[coord.x]
-                let newRow1 = newRows[coord.y]
-                let blank = newRow1.items[coord.x]
-                newRow0.items[coord.x] = blank
-                newRow1.items[coord.x] = upOne
-                newRows[coord.y - 1] = newRow0
-                newRows[coord.y] = newRow1
-                return Configuration(newRows)
+                swap(&(rows[coord.y - 1].items[coord.x]), &(rows[coord.y].items[coord.x]))
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -124,16 +104,8 @@ struct Configuration {
     func down() -> Configuration? {
         if let coord = self.coordinate {
             if coord.y + 1 < self.rows.count {
-                let newRows = self.rows
-                let newRow0 = newRows[coord.y]
-                let blank = newRow0.items[coord.x]
-                let newRow1 = newRows[coord.y + 1]
-                let downOne = newRow1.items[coord.x]
-                newRow0.items[coord.x] = downOne
-                newRow1.items[coord.x] = blank
-                newRows[coord.y] = newRow0
-                newRows[coord.y + 1] = newRow1
-                return Configuration(newRows)
+                swap(&(rows[coord.y].items[coord.x]), &(rows[coord.y + 1].items[coord.x]))
+                return Configuration(rows)
             } else {
                 return nil
             }
