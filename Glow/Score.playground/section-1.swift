@@ -32,17 +32,19 @@ struct Configuration {
         }
     }
     
+    func swapItemsInRow(inout #itemA: String, inout itemB: String) {
+        var temp = itemA
+        itemA = itemB
+        itemB = temp
+    }
+    
     func left() -> Configuration? {
         if let coord = self.coordinate {
             if coord.x > 0 {
-                let newRows = self.rows
-                let newRow = newRows[coord.y]
-                let blank = newRow.items[coord.x]
-                let leftOne = newRow.items[coord.x - 1]
-                newRow.items[coord.x - 1] = blank
-                newRow.items[coord.x] = leftOne
-                newRows[coord.y] = newRow
-                return Configuration(newRows)
+                var current = rows[coord.y].items[coord.x]
+                var left = rows[coord.y].items[coord.x - 1]
+                swapItemsInRow(itemA: &current, itemB: &left)
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -50,18 +52,14 @@ struct Configuration {
             return nil
         }
     }
-
+    
     func right() -> Configuration? {
         if let coord = self.coordinate {
             if coord.x + 1 < self.rows[coord.y].items.count {
-                let newRows = self.rows
-                let newRow = newRows[coord.y]
-                let blank = newRow.items[coord.x]
-                let rightOne = newRow.items[coord.x + 1]
-                newRow.items[coord.x + 1] = blank
-                newRow.items[coord.x] = rightOne
-                newRows[coord.y] = newRow
-                return Configuration(newRows)
+                var current = rows[coord.y].items[coord.x]
+                var right = rows[coord.y].items[coord.x + 1]
+                swapItemsInRow(itemA: &current, itemB: &right)
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -69,20 +67,14 @@ struct Configuration {
             return nil
         }
     }
-
+    
     func up() -> Configuration? {
         if let coord = self.coordinate {
             if coord.y > 0 {
-                let newRows = self.rows
-                let newRow0 = newRows[coord.y - 1]
-                let upOne = newRow0.items[coord.x]
-                let newRow1 = newRows[coord.y]
-                let blank = newRow1.items[coord.x]
-                newRow0.items[coord.x] = blank
-                newRow1.items[coord.x] = upOne
-                newRows[coord.y - 1] = newRow0
-                newRows[coord.y] = newRow1
-                return Configuration(newRows)
+                var current = rows[coord.y].items[coord.x]
+                var up = rows[coord.y - 1].items[coord.x]
+                swapItemsInRow(itemA: &current, itemB: &up)
+                return Configuration(rows)
             } else {
                 return nil
             }
@@ -94,16 +86,10 @@ struct Configuration {
     func down() -> Configuration? {
         if let coord = self.coordinate {
             if coord.y + 1 < self.rows.count {
-                let newRows = self.rows
-                let newRow0 = newRows[coord.y]
-                let blank = newRow0.items[coord.x]
-                let newRow1 = newRows[coord.y + 1]
-                let downOne = newRow1.items[coord.x]
-                newRow0.items[coord.x] = downOne
-                newRow1.items[coord.x] = blank
-                newRows[coord.y] = newRow0
-                newRows[coord.y + 1] = newRow1
-                return Configuration(newRows)
+                var current = rows[coord.y].items[coord.x]
+                var down = rows[coord.y + 1].items[coord.x]
+                swapItemsInRow(itemA: &current, itemB: &down)
+                return Configuration(rows)
             } else {
                 return nil
             }

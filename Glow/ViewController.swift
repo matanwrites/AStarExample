@@ -41,7 +41,7 @@ class ViewController: NSViewController {
     
     var data: Configuration?
     
-    var stepStack: String[] = []
+    var stepStack: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +54,10 @@ class ViewController: NSViewController {
             object: nil,
             queue: NSOperationQueue.mainQueue(),
             usingBlock: { (notification: NSNotification!) -> () in
-                let keyTag: Int = notification.userInfo[kUserInfoKeyTag] as Int
-                self.handleKeyboardEvent(keyTag)
+                if let tagObject : AnyObject = notification.userInfo[kUserInfoKeyTag] {
+                    let keyTag: Int = tagObject as Int
+                    self.handleKeyboardEvent(keyTag)
+                }
             })
     }
     
@@ -138,12 +140,7 @@ class ViewController: NSViewController {
     }
     
     func render() {
-        if let cells = cellContainer.layer.sublayers {
-            for cell: CALayer! in cells.copy() {
-                cell.removeFromSuperlayer()
-            }
-        }
-        
+        cellContainer.layer.sublayers = nil
         stepLabel.stringValue = stepStack.bridgeToObjectiveC().componentsJoinedByString("")
         
         if let validData = data {
