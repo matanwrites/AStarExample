@@ -11,11 +11,24 @@ import QuartzCore
 
 let kSpacing: CGFloat = 2
 
+extension Array {
+    func combine(separator: String) -> String{
+        var str : String = ""
+        for (idx, item) in enumerate(self) {
+            str += "\(item)"
+            if idx < self.count-1 {
+                str += separator
+            }
+        }
+        return str
+    }
+}
+
 class ViewController: NSViewController {
     
-    @IBOutlet var cellContainer: NSView
-    @IBOutlet var stepLabel: NSTextField
-    @IBOutlet var scoreLabel: NSTextField
+    @IBOutlet var cellContainer: NSView!
+    @IBOutlet var stepLabel: NSTextField!
+    @IBOutlet var scoreLabel: NSTextField!
     
     var defaultData: Configuration {
     get {
@@ -54,7 +67,7 @@ class ViewController: NSViewController {
             object: nil,
             queue: NSOperationQueue.mainQueue(),
             usingBlock: { (notification: NSNotification!) -> () in
-                if let tagObject : AnyObject = notification.userInfo[kUserInfoKeyTag] {
+                if let tagObject : AnyObject = notification.userInfo![kUserInfoKeyTag] {
                     let keyTag: Int = tagObject as Int
                     self.handleKeyboardEvent(keyTag)
                 }
@@ -71,10 +84,10 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         
-        view.window.styleMask |= NSFullSizeContentViewWindowMask
-        view.window.titlebarAppearsTransparent = true
-        view.window.titleVisibility = .Hidden
-        view.window.movableByWindowBackground = true
+        view.window!.styleMask |= NSFullSizeContentViewWindowMask
+        view.window!.titlebarAppearsTransparent = true
+        view.window!.titleVisibility = .Hidden
+        view.window!.movableByWindowBackground = true
     }
     
     override func viewDidDisappear() {
@@ -131,7 +144,7 @@ class ViewController: NSViewController {
         case kTagCopy:
             let pastboard = NSPasteboard.generalPasteboard()
             pastboard.clearContents()
-            pastboard.writeObjects([stepStack.bridgeToObjectiveC().componentsJoinedByString("")])
+            pastboard.writeObjects([stepStack.combine("")])
         default:
             println("Do nothing.")
         }
@@ -140,8 +153,8 @@ class ViewController: NSViewController {
     }
     
     func render() {
-        cellContainer.layer.sublayers = nil
-        stepLabel.stringValue = stepStack.bridgeToObjectiveC().componentsJoinedByString("")
+        cellContainer.layer!.sublayers = nil
+        stepLabel.stringValue = stepStack.combine("")
         
         if let validData = data {
             scoreLabel.stringValue = "\(targetData - validData)"
@@ -172,7 +185,7 @@ class ViewController: NSViewController {
                     return
                 }
                 
-                cellContainer.layer.addSublayer(cell)
+                cellContainer.layer!.addSublayer(cell)
             }
         }
     }

@@ -17,7 +17,7 @@ let kDown  = "D"
 let kLeft  = "L"
 let kRight = "R"
 
-@infix func - (left: Configuration, right: Configuration) -> Int {
+func - (left: Configuration, right: Configuration) -> Int {
     var result: Int = 0
     for (y, row) in enumerate(left.rows) {
         for (x, items) in enumerate(row.items) {
