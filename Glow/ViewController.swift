@@ -96,8 +96,6 @@ class ViewController: NSViewController {
     }
     
     func handleKeyboardEvent(keyTag: Int) {
-        println("\(keyTag) Tapped.")
-        
         switch keyTag {
         case kTagUp:
             if let newData = data!.up() {
@@ -138,7 +136,7 @@ class ViewController: NSViewController {
                 case kRight:
                     data = data!.left()
                 default:
-                    println("Do nothing.")
+                    break;
                 }
             }
         case kTagCopy:
@@ -146,7 +144,7 @@ class ViewController: NSViewController {
             pastboard.clearContents()
             pastboard.writeObjects([stepStack.combine("")])
         default:
-            println("Do nothing.")
+            break;
         }
         
         render()
@@ -189,6 +187,10 @@ class ViewController: NSViewController {
             }
         }
     }
+    
+    
+    // MARK: A* Algorithom
+    
     
 }
 

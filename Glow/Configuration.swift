@@ -121,4 +121,10 @@ struct Configuration {
             return nil
         }
     }
+
+    
+    // MARK: A* Algorithm
+    let g_score: Int = 0
+    let f_score: Int = 0
+    
 }
