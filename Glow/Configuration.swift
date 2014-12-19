@@ -29,6 +29,10 @@ func - (left: Configuration, right: Configuration) -> Int {
     return result
 }
 
+func ==(lhs: Configuration, rhs: Configuration) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+
 struct Coordinate {
     let x: Int
     let y: Int
@@ -42,14 +46,31 @@ struct Coordinate {
 struct Row {
     var items: [String]
     
+    var displayName: String {
+        get {
+            return self.items.combine("")
+        }
+    }
+    
     init(_ items: [String]) {
         self.items = items
     }
 }
 
-struct Configuration {
+struct Configuration: Hashable {
     var rows: [Row]
     let coordinate: Coordinate?
+    
+    var hashValue: Int {
+        get {
+            var result = ""
+            for (index, row) in enumerate(self.rows) {
+                result += row.displayName
+            }
+            
+            return result.hashValue
+        }
+    }
     
     init(_ rows: [Row]) {        
         self.rows = rows
@@ -59,6 +80,30 @@ struct Configuration {
                     self.coordinate = Coordinate(x, y)
                 }
             }
+        }
+    }
+    
+    var neighbors: [String : Configuration] {
+        get {
+            var result = [String : Configuration]()
+            
+            if let left = left() {
+                result[kLeft] = left
+            }
+            
+            if let right = right() {
+                result[kRight] = right
+            }
+            
+            if let up = up() {
+                result[kUp] = up
+            }
+            
+            if let down = down() {
+                result[kDown] = down
+            }
+            
+            return result
         }
     }
     
@@ -121,10 +166,5 @@ struct Configuration {
             return nil
         }
     }
-
-    
-    // MARK: A* Algorithm
-    let g_score: Int = 0
-    let f_score: Int = 0
     
 }

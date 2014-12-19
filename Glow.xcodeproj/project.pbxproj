@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B98660C1A442B8C00573A7E /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98660B1A442B8C00573A7E /* PriorityQueue.swift */; };
 		0BD367931A42C60E00CCB332 /* GlowPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD367921A42C60E00CCB332 /* GlowPriorityQueue.m */; };
 		0BD367A51A42CC7A00CCB332 /* GlowPriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD367A41A42CC7A00CCB332 /* GlowPriorityQueueTests.swift */; };
 		9171F5721946D8DA0039C50E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5711946D8DA0039C50E /* main.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B98660B1A442B8C00573A7E /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glow-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BD367911A42C60E00CCB332 /* GlowPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowPriorityQueue.h; path = GlowPriorityQueue/GlowPriorityQueue.h; sourceTree = "<group>"; };
 		0BD367921A42C60E00CCB332 /* GlowPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowPriorityQueue.m; path = GlowPriorityQueue/GlowPriorityQueue.m; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
 				9171F5901946D8F70039C50E /* Configuration.swift */,
+				0B98660B1A442B8C00573A7E /* PriorityQueue.swift */,
 				9171F5731946D8DA0039C50E /* ViewController.swift */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
@@ -263,6 +266,7 @@
 				9171F5741946D8DA0039C50E /* ViewController.swift in Sources */,
 				9171F5911946D8F70039C50E /* Configuration.swift in Sources */,
 				9171F5721946D8DA0039C50E /* main.swift in Sources */,
+				0B98660C1A442B8C00573A7E /* PriorityQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +449,7 @@
 				0BD367A21A42CC5300CCB332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9171F5671946D8D90039C50E /* Build configuration list for PBXProject "Glow" */ = {
 			isa = XCConfigurationList;

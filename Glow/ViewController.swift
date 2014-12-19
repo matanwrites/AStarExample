@@ -29,6 +29,7 @@ class ViewController: NSViewController {
     @IBOutlet var cellContainer: NSView!
     @IBOutlet var stepLabel: NSTextField!
     @IBOutlet var scoreLabel: NSTextField!
+    @IBOutlet var coordinateLabel: NSTextField!
     
     var defaultData: Configuration {
     get {
@@ -143,6 +144,10 @@ class ViewController: NSViewController {
             let pastboard = NSPasteboard.generalPasteboard()
             pastboard.clearContents()
             pastboard.writeObjects([stepStack.combine("")])
+        case kTagFindPath:
+            dispatch_async(dispatch_queue_create("A*", DISPATCH_QUEUE_SERIAL)) {
+                self.AStarAlgorithom(self.defaultData, goal: self.targetData)
+            }
         default:
             break;
         }
@@ -156,6 +161,7 @@ class ViewController: NSViewController {
         
         if let validData = data {
             scoreLabel.stringValue = "\(targetData - validData)"
+            coordinateLabel.stringValue = "(\(validData.coordinate!.x), \(validData.coordinate!.y))"
         }
         
         let containerWidth = NSWidth(cellContainer.bounds)
@@ -191,6 +197,85 @@ class ViewController: NSViewController {
     
     // MARK: A* Algorithom
     
+    func AStarAlgorithom(start: Configuration, goal: Configuration) {
+        var g_score = [start : 0]
+        
+        var f_score = [start : (g_score[start]! + heuristic_cost_estimate(start, goal))]
+        
+        var closeSet = [Configuration]()
+        
+        var openSet = PriorityQueue<Int, Configuration>()
+        openSet.push(f_score[start]!, item: start)
+        
+        var cameFrom = [Configuration : [Configuration : String]]()
+        
+        while openSet.count > 0 {
+            let current = openSet.pop()!.1
+            
+            if current == goal {
+                return
+            }
+            
+            closeSet.append(current)
+            
+            for (index, (direction, neighbor)) in enumerate(current.neighbors) {
+                if (find(closeSet, neighbor) != nil) {
+                    continue
+                }
+                
+                let tentative_g_score = g_score[current]! + distance_between(current, neighbor)
+                
+                var flag = false
+                if let neighbor_g_score = g_score[neighbor] {
+                    if tentative_g_score < neighbor_g_score {
+                        flag = true
+                    }
+                }
+                
+                if !openSet.find(neighbor) || flag {
+                    
+                    cameFrom[neighbor] = [current : direction]
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.stepStack = self.pathsDescription(cameFrom, result: neighbor)
+                        self.data = neighbor
+                        self.render()
+                    }
+                    
+                    g_score[neighbor] = tentative_g_score
+                    
+                    let cost_estimate = heuristic_cost_estimate(neighbor, goal)
+                    
+                    f_score[neighbor] = g_score[neighbor]! + cost_estimate
+                    
+                    if !openSet.find(neighbor) {
+                        openSet.push(f_score[neighbor]!, item: neighbor)
+                    }
+                }
+            }
+        }
+    }
     
+    func pathsDescription(cameFrom: [Configuration : [Configuration : String]], result: Configuration) -> [String] {
+        var paths = [String]()
+        var query = result
+        while (cameFrom[query] != nil) {
+            let dict = cameFrom[query]!
+            query = dict.keys.first!
+            let path = dict.values.first!
+            paths.insert(path, atIndex: 0)
+        }
+        
+        return paths
+    }
+    
+    func heuristic_cost_estimate(config1: Configuration, _ config2: Configuration) -> Int {
+        return config1 - config2
+    }
+    
+    func distance_between(config1: Configuration, _ config2: Configuration) -> Int {
+        return config1 - config2
+    }
+
 }
 
