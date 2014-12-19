@@ -44,6 +44,12 @@ class ViewController: NSViewController {
     
     var targetData: Configuration {
     get {
+//        return Configuration([
+//            Row([kBlank, kBlue, kBlue, kBlue]),
+//            Row([kRed, kRed, kRed, kBlue]),
+//            Row([kRed, kRed, kRed, kBlue]),
+//            Row([kRed, kBlue, kBlue, kBlue]),
+//            ])
         return Configuration([
             Row([kBlank, kBlue, kRed, kBlue]),
             Row([kBlue, kRed, kBlue, kRed]),
@@ -62,6 +68,8 @@ class ViewController: NSViewController {
         
         cellContainer.layer = CALayer()
         cellContainer.wantsLayer = true
+        
+        self.coordinateLabel.stringValue = ""
         
         NSNotificationCenter.defaultCenter().addObserverForName(
             kKeyboardEventNotification,
@@ -161,7 +169,6 @@ class ViewController: NSViewController {
         
         if let validData = data {
             scoreLabel.stringValue = "\(targetData - validData)"
-            coordinateLabel.stringValue = "(\(validData.coordinate!.x), \(validData.coordinate!.y))"
         }
         
         let containerWidth = NSWidth(cellContainer.bounds)
@@ -204,7 +211,7 @@ class ViewController: NSViewController {
         
         var closeSet = [Configuration]()
         
-        var openSet = PriorityQueue<Int, Configuration>()
+        var openSet = PriorityQueue()
         openSet.push(f_score[start]!, item: start)
         
         var cameFrom = [Configuration : [Configuration : String]]()
@@ -213,6 +220,13 @@ class ViewController: NSViewController {
             let current = openSet.pop()!.1
             
             if current == goal {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.stepStack = self.pathsDescription(cameFrom, result: current)
+                    self.data = current
+
+                    self.coordinateLabel.stringValue = "Done"
+                    self.render()
+                }
                 return
             }
             
@@ -239,6 +253,8 @@ class ViewController: NSViewController {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.stepStack = self.pathsDescription(cameFrom, result: neighbor)
                         self.data = neighbor
+                        
+                        self.coordinateLabel.stringValue = "Searching for path..."
                         self.render()
                     }
                     

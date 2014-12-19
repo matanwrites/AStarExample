@@ -52,7 +52,7 @@
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-8h-dgi">
                                         <rect key="frame" x="18" y="501" width="464" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="(0, 0)" usesSingleLineMode="YES" id="7Hm-wJ-5Nk">
+                                        <textFieldCell key="cell" lineBreakMode="truncatingHead" enabled="NO" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" usesSingleLineMode="YES" id="7Hm-wJ-5Nk">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

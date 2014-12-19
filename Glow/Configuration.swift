@@ -61,16 +61,7 @@ struct Configuration: Hashable {
     var rows: [Row]
     let coordinate: Coordinate?
     
-    var hashValue: Int {
-        get {
-            var result = ""
-            for (index, row) in enumerate(self.rows) {
-                result += row.displayName
-            }
-            
-            return result.hashValue
-        }
-    }
+    var hashValue: Int
     
     init(_ rows: [Row]) {        
         self.rows = rows
@@ -81,6 +72,12 @@ struct Configuration: Hashable {
                 }
             }
         }
+        
+        var result = ""
+        for (index, row) in enumerate(rows) {
+            result += row.displayName
+        }
+        hashValue = result.hashValue
     }
     
     var neighbors: [String : Configuration] {

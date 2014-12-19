@@ -20,16 +20,15 @@
 
 import Foundation
 
-public class PriorityQueue<PrioType: Comparable, ValueType>: GeneratorType {
-    typealias Element = ValueType
-    private final var heap = [(PrioType, ValueType)]()
+class PriorityQueue {
+    private final var heap = [(Int, Configuration)]()
     private var cache = [Configuration : Int]()
     
-    public init() { }
+    init() { }
     
-    public func push(priority: PrioType, item: ValueType) {
+    func push(priority: Int, item: Configuration) {
 
-        cache[item as Configuration] = 1
+        cache[item] = 1
         
         heap.append((priority, item))
         
@@ -48,36 +47,36 @@ public class PriorityQueue<PrioType: Comparable, ValueType>: GeneratorType {
         }
     }
     
-    public func find(item: ValueType) -> Bool {
-        if let find = cache[item as Configuration] {
+    func find(item: Configuration) -> Bool {
+        if let find = cache[item] {
             return true
         }
         
         return false
     }
     
-    public func next() -> ValueType? {
+    func next() -> Configuration? {
         return pop()?.1
     }
     
-    public func pop() -> (PrioType, ValueType)? {
+    func pop() -> (Int, Configuration)? {
         if heap.count == 0 {
             return nil
         }
         swap(&heap[0], &heap[heap.endIndex - 1])
         let pop = heap.removeLast()
         
-        cache.removeValueForKey(pop.1 as Configuration)
+        cache.removeValueForKey(pop.1)
         
         heapify(0)
         return pop
     }
     
-    public func removeAll() {
+    func removeAll() {
         heap = []
     }
     
-    private func heapify(index: Int) {
+    func heapify(index: Int) {
         let left = index * 2 + 1
         let right = index * 2 + 2
         var smallest = index
@@ -96,14 +95,7 @@ public class PriorityQueue<PrioType: Comparable, ValueType>: GeneratorType {
         }
     }
     
-    public var count: Int {
+    var count: Int {
         return heap.count
-    }
-}
-
-extension PriorityQueue: SequenceType {
-    typealias Generator = PriorityQueue
-    public func generate() -> Generator {
-        return self
     }
 }
