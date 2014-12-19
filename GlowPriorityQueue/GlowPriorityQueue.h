@@ -20,6 +20,8 @@ typedef CFComparisonResult(^GlowPriorityQueueCompareBlock)(id, id);
 
 - (void)addObject:(id)object;
 
+- (BOOL)containsObject:(id)object;
+
 - (id)shift;
 
 @end

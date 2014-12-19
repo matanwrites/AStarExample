@@ -56,6 +56,8 @@ class GlowPriorityQueueTests: XCTestCase {
             return a < b
         }
         for (index, a) in enumerate(sortedCases) {
+            XCTAssert(queue.containsObject(a))
+            
             let shift = queue.shift() as Int
             XCTAssert(shift == a)
         }

@@ -62,6 +62,11 @@ static CFComparisonResult CompareCallBack(const void *ptr1, const void *ptr2, vo
 }
 
 
+- (BOOL)containsObject:(id)object {
+    return (BOOL) CFBinaryHeapContainsValue(_bucket, (__bridge const void *) object);
+}
+
+
 - (id)shift {
     id minimum = (__bridge_transfer id) CFBinaryHeapGetMinimum(_bucket);
     CFBinaryHeapRemoveMinimumValue(_bucket);
