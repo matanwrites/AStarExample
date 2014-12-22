@@ -57,27 +57,27 @@ struct Row {
     }
 }
 
-struct Configuration: Hashable {
+class Configuration: NSObject, Hashable {
     var rows: [Row]
     let coordinate: Coordinate?
     
-    var hashValue: Int
-    
-    init(_ rows: [Row]) {        
-        self.rows = rows
-        for (y, row) in enumerate(self.rows) {
-            for (x, item) in enumerate(row.items) {
-                if item == kBlank {
-                    self.coordinate = Coordinate(x, y)
-                }
-            }
+    override var hashValue: Int {
+        get {
+            return actualHash
         }
+    }
+    
+    let actualHash: Int
+    
+    init(_ rows: [Row], x: Int, y: Int) {
+        self.rows = rows
+        self.coordinate = Coordinate(x, y)
         
         var result = ""
         for (index, row) in enumerate(rows) {
             result += row.displayName
         }
-        hashValue = result.hashValue
+        actualHash = result.hashValue
     }
     
     var neighbors: [String : Configuration] {
@@ -111,7 +111,7 @@ struct Configuration: Hashable {
                 var items = rows[coord.y].items
                 swap(&items[coord.x], &items[coord.x - 1])
                 rows[coord.y].items = items
-                return Configuration(rows)
+                return Configuration(rows, x: coord.x - 1, y: coord.y)
             } else {
                 return nil
             }
@@ -127,7 +127,7 @@ struct Configuration: Hashable {
                 var items = rows[coord.y].items
                 swap(&items[coord.x], &items[coord.x + 1])
                 rows[coord.y].items = items
-                return Configuration(rows)
+                return Configuration(rows, x: coord.x + 1, y: coord.y)
             } else {
                 return nil
             }
@@ -141,7 +141,7 @@ struct Configuration: Hashable {
             if coord.y > 0 {
                 var rows = self.rows
                 swap(&(rows[coord.y - 1].items[coord.x]), &(rows[coord.y].items[coord.x]))
-                return Configuration(rows)
+                return Configuration(rows, x: coord.x, y: coord.y - 1)
             } else {
                 return nil
             }
@@ -155,7 +155,7 @@ struct Configuration: Hashable {
             if coord.y + 1 < self.rows.count {
                 var rows = self.rows
                 swap(&(rows[coord.y].items[coord.x]), &(rows[coord.y + 1].items[coord.x]))
-                return Configuration(rows)
+                return Configuration(rows, x: coord.x, y: coord.y + 1)
             } else {
                 return nil
             }

@@ -38,24 +38,18 @@ class ViewController: NSViewController {
             Row([kRed, kRed, kBlue, kBlue]),
             Row([kRed, kRed, kBlue, kBlue]),
             Row([kRed, kRed, kBlue, kBlue]),
-            ])
+            ], x: 0, y: 0)
     }
     }
     
     var targetData: Configuration {
     get {
-//        return Configuration([
-//            Row([kBlank, kBlue, kBlue, kBlue]),
-//            Row([kRed, kRed, kRed, kBlue]),
-//            Row([kRed, kRed, kRed, kBlue]),
-//            Row([kRed, kBlue, kBlue, kBlue]),
-//            ])
         return Configuration([
             Row([kBlank, kBlue, kRed, kBlue]),
             Row([kBlue, kRed, kBlue, kRed]),
             Row([kRed, kBlue, kRed, kBlue]),
             Row([kBlue, kRed, kBlue, kRed]),
-            ])
+            ], x: 0, y: 0)
     }
     }
     
@@ -211,13 +205,13 @@ class ViewController: NSViewController {
         
         var closeSet = [Configuration]()
         
-        var openSet = PriorityQueue()
-        openSet.push(f_score[start]!, item: start)
+        var openSet = GlowPriorityQueue()
+        openSet.addObject(start, withPriority: f_score[start]!)
         
         var cameFrom = [Configuration : [Configuration : String]]()
         
         while openSet.count > 0 {
-            let current = openSet.pop()!.1
+            let current = openSet.removeFirstObject() as Configuration
             
             if current == goal {
                 dispatch_async(dispatch_get_main_queue()) {
@@ -246,7 +240,7 @@ class ViewController: NSViewController {
                     }
                 }
                 
-                if !openSet.find(neighbor) || flag {
+                if !openSet.containsObject(neighbor) || flag {
                     
                     cameFrom[neighbor] = [current : direction]
                     
@@ -264,8 +258,8 @@ class ViewController: NSViewController {
                     
                     f_score[neighbor] = g_score[neighbor]! + cost_estimate
                     
-                    if !openSet.find(neighbor) {
-                        openSet.push(f_score[neighbor]!, item: neighbor)
+                    if !openSet.containsObject(neighbor) {
+                        openSet.addObject(neighbor, withPriority: f_score[neighbor]!)
                     }
                 }
             }

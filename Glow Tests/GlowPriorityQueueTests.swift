@@ -12,44 +12,27 @@ import XCTest
 class GlowPriorityQueueTests: XCTestCase {
 
     func testMultipleInstances() {
-        let queue1 = GlowPriorityQueue() { (obj1, obj2) -> CFComparisonResult in
-            return .CompareGreaterThan
-        }
+        let queue1 = GlowPriorityQueue()
+        queue1.addObject("1", withPriority: 1);
+        queue1.addObject("2", withPriority: 2);
         
-        queue1.addObject("1");
-        queue1.addObject("2");
+        let queue2 = GlowPriorityQueue()
+        queue2.addObject("2", withPriority: 2);
+        queue2.addObject("1", withPriority: 1);
         
-        let queue2 = GlowPriorityQueue() { (obj1, obj2) -> CFComparisonResult in
-            return .CompareLessThan
-        }
+        let queue1Minimum = queue1.removeFirstObject() as? String
+        let queue2Minimum = queue2.removeFirstObject() as? String
         
-        queue2.addObject("1");
-        queue2.addObject("2");
-        
-        let queue1Minimum = queue1.shift() as? String
-        let queue2Minimum = queue2.shift() as? String
-        
-        XCTAssert(queue1Minimum == "2")
+        XCTAssert(queue1Minimum == "1")
         XCTAssert(queue2Minimum == "1")
     }
     
     func testAppend() {
-        let queue = GlowPriorityQueue() { (obj1, obj2) -> CFComparisonResult in
-            let number1 = obj1 as Int
-            let number2 = obj2 as Int
-            
-            if number1 > number2 {
-                return .CompareGreaterThan
-            } else if number1 < number2 {
-                return .CompareLessThan
-            } else {
-                return .CompareEqualTo
-            }
-        }
+        let queue = GlowPriorityQueue()
         
         let cases = [1, 10, 9, 8, 5, 100, 4]
         for (index, a) in enumerate(cases) {
-            queue.addObject(a)
+            queue.addObject(a, withPriority: a)
         }
         
         let sortedCases = cases.sorted { (a, b) -> Bool in
@@ -58,7 +41,7 @@ class GlowPriorityQueueTests: XCTestCase {
         for (index, a) in enumerate(sortedCases) {
             XCTAssert(queue.containsObject(a))
             
-            let shift = queue.shift() as Int
+            let shift = queue.removeFirstObject() as Int
             XCTAssert(shift == a)
         }
     }

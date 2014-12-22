@@ -2,47 +2,43 @@
 //  GlowPriorityQueue.m
 //  Glow
 //
-//  Created by Yan Li on 12/18/14.
+//  Created by Yan Li on 12/22/14.
 //  Copyright (c) 2014 eyeplum.com. All rights reserved.
 //
 
 #import "GlowPriorityQueue.h"
 
 
-@interface GlowPriorityQueue()
+@implementation GlowPriorityQueue {
+    CFBinaryHeapRef _bucket;
+    NSMutableDictionary *_memberCache;
+}
 
-@property (nonatomic, unsafe_unretained) CFBinaryHeapRef bucket;
-
-@end
-
-
-@implementation GlowPriorityQueue
-
-static GlowPriorityQueueCompareBlock compareBlock = NULL;
-
-static CFComparisonResult CompareCallBack(const void *ptr1, const void *ptr2, void *info) {
-    return compareBlock((__bridge id) ptr1, (__bridge id) ptr2);
++ (instancetype)priorityQueue {
+    return [[self alloc] init];
 }
 
 
-+ (instancetype)priorityQueueWithCompareBlock:(GlowPriorityQueueCompareBlock)block {
-    return [[self alloc] initWithCompareBlock:block];
+static CFComparisonResult compareCallBack(const void *ptr1, const void *ptr2, void *info) {
+    NSArray *element1 = (__bridge NSArray *)ptr1;
+    NSArray *element2 = (__bridge NSArray *)ptr2;
+    if ([element1[1] unsignedIntegerValue] > [element2[1] unsignedIntegerValue]) {
+        return kCFCompareGreaterThan;
+    } else {
+        return kCFCompareLessThan;
+    }
 }
 
 
-- (instancetype)initWithCompareBlock:(GlowPriorityQueueCompareBlock)block {
+- (instancetype)init {
     if (self = [super init]) {
-        compareBlock = [block copy];
+        _memberCache = [NSMutableDictionary dictionary];
         
-        CFBinaryHeapCallBacks callBacks = {
-            0,
-            nil,
-            nil,
-            nil,
-            &CompareCallBack
+        CFBinaryHeapCallBacks callbacks = {
+            0, nil, nil, nil, &compareCallBack
         };
         
-        _bucket = CFBinaryHeapCreate(kCFAllocatorDefault, 0, &callBacks, NULL);
+        _bucket = CFBinaryHeapCreate(NULL, 0, &callbacks, NULL);
     }
     
     return self;
@@ -57,25 +53,27 @@ static CFComparisonResult CompareCallBack(const void *ptr1, const void *ptr2, vo
 }
 
 
-- (void)addObject:(id)object {
-    CFBinaryHeapAddValue(_bucket, (__bridge_retained const void *) object);
+- (NSUInteger)count {
+    return CFBinaryHeapGetCount(_bucket);
+}
+
+
+- (void)addObject:(id)object withPriority:(NSInteger)priority {
+    CFBinaryHeapAddValue(_bucket, (__bridge_retained void *) @[object, @(priority)]);
+    _memberCache[@([object hash])] = @(priority);
+}
+
+
+- (id)removeFirstObject {
+    id firstObject = ((__bridge_transfer NSArray *) CFBinaryHeapGetMinimum(_bucket))[0];
+    CFBinaryHeapRemoveMinimumValue(_bucket);
+    [_memberCache removeObjectForKey:@([firstObject hash])];
+    return firstObject;
 }
 
 
 - (BOOL)containsObject:(id)object {
-    return (BOOL) CFBinaryHeapContainsValue(_bucket, (__bridge const void *) object);
-}
-
-
-- (id)shift {
-    id minimum = (__bridge_transfer id) CFBinaryHeapGetMinimum(_bucket);
-    CFBinaryHeapRemoveMinimumValue(_bucket);
-    return minimum;
-}
-
-
-- (NSUInteger)count {
-    return CFBinaryHeapGetCount(_bucket);
+    return _memberCache[@([object hash])] != nil;
 }
 
 @end
