@@ -8,9 +8,9 @@
 
 import Cocoa
 
-let kBlank = "_"
-let kRed   = "R"
-let kBlue  = "B"
+let kBlank = 0
+let kRed   = 1
+let kBlue  = 2
 
 let kUp    = "U"
 let kDown  = "D"
@@ -23,7 +23,7 @@ func - (left: Configuration, right: Configuration) -> Int {
         for (x, items) in enumerate(row.items) {
             let leftItem = left.rows[y].items[x]
             let rightItem = right.rows[y].items[x]
-            result += leftItem != rightItem ? 1 : 0
+            result += (leftItem != rightItem ? 1 : 0)
         }
     }
     return result
@@ -44,7 +44,7 @@ struct Coordinate {
 }
 
 struct Row {
-    var items: [String]
+    var items: [Int]
     
     var displayName: String {
         get {
@@ -52,7 +52,7 @@ struct Row {
         }
     }
     
-    init(_ items: [String]) {
+    init(_ items: [Int]) {
         self.items = items
     }
 }

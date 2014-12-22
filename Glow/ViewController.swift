@@ -177,7 +177,7 @@ class ViewController: NSViewController {
                 let cell = CALayer()
                 cell.frame = CGRectMake(CGFloat(x) * width, containerWidth - CGFloat(y + 1) * width, cellWidth, cellWidth)
                 
-                switch data!.rows[y].items[x] as String {
+                switch data!.rows[y].items[x] as Int {
                 case kBlank:
                     cell.backgroundColor = NSColor.whiteColor().CGColor
                 case kRed:
