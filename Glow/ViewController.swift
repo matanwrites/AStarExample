@@ -280,7 +280,7 @@ class ViewController: NSViewController {
     }
     
     func heuristic_cost_estimate(config1: Configuration, _ config2: Configuration) -> Int {
-        return config1 - config2
+        return (config1 - config2) + abs(config1.coordinate!.x - config2.coordinate!.x) + abs(config1.coordinate!.y - config2.coordinate!.y)
     }
     
     func distance_between(config1: Configuration, _ config2: Configuration) -> Int {
