@@ -31,27 +31,19 @@ class ViewController: NSViewController {
     @IBOutlet var scoreLabel: NSTextField!
     @IBOutlet var coordinateLabel: NSTextField!
     
-    var defaultData: Configuration {
-    get {
-        return Configuration([
-            Row([kBlank, kRed, kBlue, kBlue]),
-            Row([kRed, kRed, kBlue, kBlue]),
-            Row([kRed, kRed, kBlue, kBlue]),
-            Row([kRed, kRed, kBlue, kBlue]),
-            ], x: 0, y: 0)
-    }
-    }
+    var defaultData: Configuration = Configuration([
+        Row([kBlank, kRed, kBlue, kBlue]),
+        Row([kRed, kRed, kBlue, kBlue]),
+        Row([kRed, kRed, kBlue, kBlue]),
+        Row([kRed, kRed, kBlue, kBlue]),
+        ], x: 0, y: 0)
     
-    var targetData: Configuration {
-    get {
-        return Configuration([
-            Row([kBlank, kBlue, kRed, kBlue]),
-            Row([kBlue, kRed, kBlue, kRed]),
-            Row([kRed, kBlue, kRed, kBlue]),
-            Row([kBlue, kRed, kBlue, kRed]),
-            ], x: 0, y: 0)
-    }
-    }
+    var targetData: Configuration = Configuration([
+        Row([kBlank, kBlue, kRed, kBlue]),
+        Row([kBlue, kRed, kBlue, kRed]),
+        Row([kRed, kBlue, kRed, kBlue]),
+        Row([kBlue, kRed, kBlue, kRed]),
+        ], x: 0, y: 0)
     
     var data: Configuration?
     
@@ -162,6 +154,10 @@ class ViewController: NSViewController {
                     self.render()
                 })
                 pathFinder.findPathFrom(self.defaultData, goal: self.targetData)
+            }
+        case kTagSetTarget:
+            if let validData = self.data {
+                self.targetData = validData
             }
         default:
             break;

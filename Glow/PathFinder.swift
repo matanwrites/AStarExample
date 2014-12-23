@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 eyeplum.com. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 typealias PathFinderProgressHandler = (currentPathStack: [String], current: Configuration, finished: Bool) -> Void
 

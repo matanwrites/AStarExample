@@ -170,6 +170,11 @@
                                                 <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="pce-Dc-JA7"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Set Target" tag="7000" keyEquivalent="s" id="yM3-hg-zFb">
+                                            <connections>
+                                                <action selector="keyboardTapped:" target="Voe-Tx-rLC" id="nHI-z8-Mcc"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="riV-Fr-PXz"/>
                                         <menuItem title="Find Path" tag="50000" keyEquivalent="f" id="73u-QB-HCy">
                                             <connections>

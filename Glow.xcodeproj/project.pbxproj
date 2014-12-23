@@ -33,7 +33,7 @@
 		0B2D34ED1A47EBF700FCB0C4 /* GlowPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowPriorityQueue.h; path = GlowPriorityQueue/GlowPriorityQueue.h; sourceTree = "<group>"; };
 		0B2D34EE1A47EBF700FCB0C4 /* GlowPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowPriorityQueue.m; path = GlowPriorityQueue/GlowPriorityQueue.m; sourceTree = "<group>"; };
 		0B5C84621A494BE3006E24A7 /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
-		0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glow-Bridging-Header.h"; sourceTree = "<group>"; };
+		0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glow-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		0BD367981A42CC5300CCB332 /* Glow Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Glow Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD3679B1A42CC5300CCB332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BD367A31A42CC7A00CCB332 /* Glow Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glow Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 			children = (
 				0BD3679A1A42CC5300CCB332 /* Supporting Files */,
 				0BD367A41A42CC7A00CCB332 /* GlowPriorityQueueTests.swift */,
-				0BD367A31A42CC7A00CCB332 /* Glow Tests-Bridging-Header.h */,
 			);
 			path = "Glow Tests";
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 		0BD3679A1A42CC5300CCB332 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0BD367A31A42CC7A00CCB332 /* Glow Tests-Bridging-Header.h */,
 				0BD3679B1A42CC5300CCB332 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -97,7 +97,6 @@
 		9171F5631946D8D90039C50E = {
 			isa = PBXGroup;
 			children = (
-				0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */,
 				0B2D34EC1A47EBC600FCB0C4 /* GlowPriorityQueue */,
 				9171F56E1946D8DA0039C50E /* Glow */,
 				0BD367991A42CC5300CCB332 /* Glow Tests */,
@@ -118,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
-				9171F5901946D8F70039C50E /* Configuration.swift */,
 				9171F5731946D8DA0039C50E /* ViewController.swift */,
+				9171F5901946D8F70039C50E /* Configuration.swift */,
 				0B5C84621A494BE3006E24A7 /* PathFinder.swift */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
@@ -130,6 +129,7 @@
 		9171F56F1946D8DA0039C50E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */,
 				91B4BF27194DC571006C14C2 /* Score.playground */,
 				9171F5771946D8DA0039C50E /* Images.xcassets */,
 				9171F5701946D8DA0039C50E /* Info.plist */,
