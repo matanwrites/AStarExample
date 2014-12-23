@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B2D34EF1A47EBF700FCB0C4 /* GlowPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D34EE1A47EBF700FCB0C4 /* GlowPriorityQueue.m */; };
 		0B2D34F01A47EBF700FCB0C4 /* GlowPriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D34EE1A47EBF700FCB0C4 /* GlowPriorityQueue.m */; };
+		0B5C84631A494BE3006E24A7 /* PathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C84621A494BE3006E24A7 /* PathFinder.swift */; };
 		0BD367A51A42CC7A00CCB332 /* GlowPriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD367A41A42CC7A00CCB332 /* GlowPriorityQueueTests.swift */; };
 		9171F5721946D8DA0039C50E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5711946D8DA0039C50E /* main.swift */; };
 		9171F5741946D8DA0039C50E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9171F5731946D8DA0039C50E /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0B2D34ED1A47EBF700FCB0C4 /* GlowPriorityQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowPriorityQueue.h; path = GlowPriorityQueue/GlowPriorityQueue.h; sourceTree = "<group>"; };
 		0B2D34EE1A47EBF700FCB0C4 /* GlowPriorityQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowPriorityQueue.m; path = GlowPriorityQueue/GlowPriorityQueue.m; sourceTree = "<group>"; };
+		0B5C84621A494BE3006E24A7 /* PathFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinder.swift; sourceTree = "<group>"; };
 		0BD367901A42C60D00CCB332 /* Glow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Glow-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BD367981A42CC5300CCB332 /* Glow Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Glow Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD3679B1A42CC5300CCB332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9171F5751946D8DA0039C50E /* AppDelegate.swift */,
 				9171F5901946D8F70039C50E /* Configuration.swift */,
 				9171F5731946D8DA0039C50E /* ViewController.swift */,
+				0B5C84621A494BE3006E24A7 /* PathFinder.swift */,
 				9171F5791946D8DA0039C50E /* Main.storyboard */,
 				9171F56F1946D8DA0039C50E /* Supporting Files */,
 			);
@@ -262,6 +265,7 @@
 			files = (
 				9171F5761946D8DA0039C50E /* AppDelegate.swift in Sources */,
 				0B2D34EF1A47EBF700FCB0C4 /* GlowPriorityQueue.m in Sources */,
+				0B5C84631A494BE3006E24A7 /* PathFinder.swift in Sources */,
 				9171F5741946D8DA0039C50E /* ViewController.swift in Sources */,
 				9171F5911946D8F70039C50E /* Configuration.swift in Sources */,
 				9171F5721946D8DA0039C50E /* main.swift in Sources */,

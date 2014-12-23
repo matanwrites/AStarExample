@@ -147,8 +147,21 @@ class ViewController: NSViewController {
             pastboard.clearContents()
             pastboard.writeObjects([stepStack.combine("")])
         case kTagFindPath:
+            let startTimestamp = CACurrentMediaTime()
             dispatch_async(dispatch_queue_create("A*", DISPATCH_QUEUE_SERIAL)) {
-                self.AStarAlgorithom(self.defaultData, goal: self.targetData)
+                let pathFinder = PathFinder(progressHandler: { (currentPathStack, current, finished) -> Void in
+                    self.stepStack = currentPathStack
+                    self.data = current
+                    
+                    self.coordinateLabel.stringValue = "Searching for path... ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
+                    if finished == true {
+                        self.coordinateLabel.stringValue = "Done ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
+                        NSApplication.sharedApplication().requestUserAttention(.CriticalRequest)
+                    }
+                    
+                    self.render()
+                })
+                pathFinder.findPathFrom(self.defaultData, goal: self.targetData)
             }
         default:
             break;
@@ -194,102 +207,5 @@ class ViewController: NSViewController {
             }
         }
     }
-    
-    
-    // MARK: A* Algorithom
-    
-    func AStarAlgorithom(start: Configuration, goal: Configuration) {
-        var startTimestamp = CACurrentMediaTime()
-        
-        var g_score = [start : 0]
-        
-        var f_score = [start : (g_score[start]! + heuristic_cost_estimate(start, goal))]
-        
-        var closeSet = [Configuration]()
-        
-        var openSet = GlowPriorityQueue()
-        openSet.addObject(start, withPriority: f_score[start]!)
-        
-        var cameFrom = [Configuration : [Configuration : String]]()
-        
-        while openSet.count > 0 {
-            let current = openSet.removeFirstObject() as Configuration
-            
-            if current == goal {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.stepStack = self.pathsDescription(cameFrom, result: current)
-                    self.data = current
-
-                    self.coordinateLabel.stringValue = "Done ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
-                    self.render()
-                    
-                    NSApplication.sharedApplication().requestUserAttention(.CriticalRequest)
-                }
-                return
-            }
-            
-            closeSet.append(current)
-            
-            for (index, (direction, neighbor)) in enumerate(current.neighbors) {
-                if (find(closeSet, neighbor) != nil) {
-                    continue
-                }
-                
-                let tentative_g_score = g_score[current]! + distance_between(current, neighbor)
-                
-                var flag = false
-                if let neighbor_g_score = g_score[neighbor] {
-                    if tentative_g_score < neighbor_g_score {
-                        flag = true
-                    }
-                }
-                
-                if !openSet.containsObject(neighbor) || flag {
-                    
-                    cameFrom[neighbor] = [current : direction]
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.stepStack = self.pathsDescription(cameFrom, result: neighbor)
-                        self.data = neighbor
-                        
-                        self.coordinateLabel.stringValue = "Searching for path... ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
-                        self.render()
-                    }
-                    
-                    g_score[neighbor] = tentative_g_score
-                    
-                    let cost_estimate = heuristic_cost_estimate(neighbor, goal)
-                    
-                    f_score[neighbor] = g_score[neighbor]! + cost_estimate
-                    
-                    if !openSet.containsObject(neighbor) {
-                        openSet.addObject(neighbor, withPriority: f_score[neighbor]!)
-                    }
-                }
-            }
-        }
-    }
-    
-    func pathsDescription(cameFrom: [Configuration : [Configuration : String]], result: Configuration) -> [String] {
-        var paths = [String]()
-        var query = result
-        while (cameFrom[query] != nil) {
-            let dict = cameFrom[query]!
-            query = dict.keys.first!
-            let path = dict.values.first!
-            paths.insert(path, atIndex: 0)
-        }
-        
-        return paths
-    }
-    
-    func heuristic_cost_estimate(config1: Configuration, _ config2: Configuration) -> Int {
-        return distance_between(config1, config2) + (abs(config1.coordinate!.x - config2.coordinate!.x) + abs(config1.coordinate!.y - config2.coordinate!.y))
-    }
-    
-    func distance_between(config1: Configuration, _ config2: Configuration) -> Int {
-        return config1 - config2
-    }
-
 }
 
