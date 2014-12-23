@@ -222,6 +222,8 @@ class ViewController: NSViewController {
 
                     self.coordinateLabel.stringValue = "Done ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
                     self.render()
+                    
+                    NSApplication.sharedApplication().requestUserAttention(.CriticalRequest)
                 }
                 return
             }
