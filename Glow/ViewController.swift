@@ -147,7 +147,7 @@ class ViewController: NSViewController {
                     
                     self.coordinateLabel.stringValue = "Searching for path... ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
                     if finished == true {
-                        self.coordinateLabel.stringValue = "Done ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
+                        self.coordinateLabel.stringValue = "Done. ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
                         NSApplication.sharedApplication().requestUserAttention(.CriticalRequest)
                     }
                     
@@ -158,6 +158,9 @@ class ViewController: NSViewController {
         case kTagSetTarget:
             if let validData = self.data {
                 self.targetData = validData
+                self.coordinateLabel.stringValue = "Current configuration set as target."
+            } else {
+                self.coordinateLabel.stringValue = "Invalid target configuration."
             }
         default:
             break;
