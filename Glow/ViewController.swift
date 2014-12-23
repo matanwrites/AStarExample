@@ -199,6 +199,8 @@ class ViewController: NSViewController {
     // MARK: A* Algorithom
     
     func AStarAlgorithom(start: Configuration, goal: Configuration) {
+        var startTimestamp = CACurrentMediaTime()
+        
         var g_score = [start : 0]
         
         var f_score = [start : (g_score[start]! + heuristic_cost_estimate(start, goal))]
@@ -218,7 +220,7 @@ class ViewController: NSViewController {
                     self.stepStack = self.pathsDescription(cameFrom, result: current)
                     self.data = current
 
-                    self.coordinateLabel.stringValue = "Done"
+                    self.coordinateLabel.stringValue = "Done ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
                     self.render()
                 }
                 return
@@ -248,7 +250,7 @@ class ViewController: NSViewController {
                         self.stepStack = self.pathsDescription(cameFrom, result: neighbor)
                         self.data = neighbor
                         
-                        self.coordinateLabel.stringValue = "Searching for path..."
+                        self.coordinateLabel.stringValue = "Searching for path... ( \(Int(CACurrentMediaTime() - startTimestamp)) Seconds )"
                         self.render()
                     }
                     
