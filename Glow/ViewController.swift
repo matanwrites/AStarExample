@@ -63,7 +63,7 @@ class ViewController: NSViewController {
             queue: NSOperationQueue.mainQueue(),
             usingBlock: { (notification: NSNotification!) -> () in
                 if let tagObject : AnyObject = notification.userInfo![kUserInfoKeyTag] {
-                    let keyTag: Int = tagObject as Int
+                    let keyTag: Int = tagObject as! Int
                     self.handleKeyboardEvent(keyTag)
                 }
             })

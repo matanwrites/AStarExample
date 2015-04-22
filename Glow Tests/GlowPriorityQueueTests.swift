@@ -41,7 +41,7 @@ class GlowPriorityQueueTests: XCTestCase {
         for (index, a) in enumerate(sortedCases) {
             XCTAssert(queue.containsObject(a))
             
-            let shift = queue.removeFirstObject() as Int
+            let shift = queue.removeFirstObject() as! Int
             XCTAssert(shift == a)
         }
     }

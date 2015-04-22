@@ -31,7 +31,7 @@ class PathFinder {
         var cameFrom = [Configuration : [Configuration : String]]()
         
         while openSet.count > 0 {
-            let current = openSet.removeFirstObject() as Configuration
+            let current = openSet.removeFirstObject() as! Configuration
             
             if current == goal {
                 dispatch_async(dispatch_get_main_queue()) {
