@@ -31,14 +31,14 @@ class GlowPriorityQueueTests: XCTestCase {
         let queue = GlowPriorityQueue()
         
         let cases = [1, 10, 9, 8, 5, 100, 4]
-        for (index, a) in enumerate(cases) {
+        for a in cases {
             queue.addObject(a, withPriority: a)
         }
         
-        let sortedCases = cases.sorted { (a, b) -> Bool in
+        let sortedCases = cases.sort { (a, b) -> Bool in
             return a < b
         }
-        for (index, a) in enumerate(sortedCases) {
+        for a in sortedCases {
             XCTAssert(queue.containsObject(a))
             
             let shift = queue.removeFirstObject() as! Int

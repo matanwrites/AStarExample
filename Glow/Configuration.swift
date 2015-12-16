@@ -19,8 +19,8 @@ let kRight = "R"
 
 func - (left: Configuration, right: Configuration) -> Int {
     var result: Int = 0
-    for (y, row) in enumerate(left.rows) {
-        for (x, items) in enumerate(row.items) {
+    for (y, row) in left.rows.enumerate() {
+        for (x, _) in row.items.enumerate() {
             let leftItem = left.rows[y].items[x]
             let rightItem = right.rows[y].items[x]
             result += (leftItem != rightItem ? 1 : 0)
@@ -57,7 +57,7 @@ struct Row {
     }
 }
 
-class Configuration: NSObject, Hashable {
+class Configuration: NSObject {
     var rows: [Row]
     let coordinate: Coordinate?
     
@@ -74,7 +74,7 @@ class Configuration: NSObject, Hashable {
         self.coordinate = Coordinate(x, y)
         
         var result = ""
-        for (index, row) in enumerate(rows) {
+        for row in rows {
             result += row.displayName
         }
         actualHash = result.hashValue

@@ -25,7 +25,7 @@ class PathFinder {
         
         var closeSet = [Configuration]()
         
-        var openSet = GlowPriorityQueue()
+        let openSet = GlowPriorityQueue()
         openSet.addObject(start, withPriority: f_score[start]!)
         
         var cameFrom = [Configuration : [Configuration : String]]()
@@ -43,8 +43,8 @@ class PathFinder {
             
             closeSet.append(current)
             
-            for (index, (direction, neighbor)) in enumerate(current.neighbors) {
-                if (find(closeSet, neighbor) != nil) {
+            for (direction, neighbor) in current.neighbors {
+                if (closeSet.indexOf(neighbor) != nil) {
                     continue
                 }
                 

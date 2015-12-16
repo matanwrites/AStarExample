@@ -14,7 +14,7 @@ let kSpacing: CGFloat = 2
 extension Array {
     func combine(separator: String) -> String{
         var str : String = ""
-        for (idx, item) in enumerate(self) {
+        for (idx, item) in self.enumerate() {
             str += "\(item)"
             if idx < self.count-1 {
                 str += separator
@@ -61,7 +61,7 @@ class ViewController: NSViewController {
             kKeyboardEventNotification,
             object: nil,
             queue: NSOperationQueue.mainQueue(),
-            usingBlock: { (notification: NSNotification!) -> () in
+            usingBlock: { (notification: NSNotification) -> () in
                 if let tagObject : AnyObject = notification.userInfo![kUserInfoKeyTag] {
                     let keyTag: Int = tagObject as! Int
                     self.handleKeyboardEvent(keyTag)
